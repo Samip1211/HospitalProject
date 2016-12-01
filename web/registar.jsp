@@ -13,7 +13,7 @@
     </head>
     <body>
            <h3>Create an Account</h3>
-        <form action="makeuser" method="post">
+        <form action="registeruser" method="post">
             
             <label>Name:</label>
             <input type="text" name="pat_name" /><br>

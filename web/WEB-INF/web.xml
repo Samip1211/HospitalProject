@@ -5,16 +5,16 @@
         <servlet-class>servlet.startsession</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>makeuser</servlet-name>
-        <servlet-class>servlet.makeuser</servlet-class>
+        <servlet-name>registeruser</servlet-name>
+        <servlet-class>servlet.registeruser</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>startsession</servlet-name>
         <url-pattern>/startsession</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>makeuser</servlet-name>
-        <url-pattern>/makeuser</url-pattern>
+        <servlet-name>registeruser</servlet-name>
+        <url-pattern>/registeruser</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
