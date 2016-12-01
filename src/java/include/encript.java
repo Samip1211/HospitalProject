@@ -24,5 +24,7 @@ public class encript {
          
         return sb.toString();
     }
-    
+    public encript(){
+        
+    }
 }
