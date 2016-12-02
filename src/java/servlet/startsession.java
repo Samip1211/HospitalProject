@@ -36,11 +36,11 @@ public class startsession extends HttpServlet {
                 
         String user = request.getParameter("pat_username");
         String pass = request.getParameter("pat_password");
-        response.sendRedirect("index.jsp");
+        
             
         
         
-       /* Consultas co;
+        Consultas co;
         co = new Consultas();
         if(co.autenticacion(user, pass)){
             HttpSession objsesion = request.getSession(true);
@@ -49,7 +49,7 @@ public class startsession extends HttpServlet {
         }else{
               response.sendRedirect("index.jsp");
                                
-        }*/
+        }
     }
 
 

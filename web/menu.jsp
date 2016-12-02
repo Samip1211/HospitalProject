@@ -6,12 +6,19 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<%
+<% 
+    String user = new String() ;
+    try{
     HttpSession objsesion = request.getSession(false);
-    String user = (String)objsesion.getAttribute("user");
-    if(user.equals("")){
+    user = (String)objsesion.getAttribute("user");
+    if(user.equals("")|| user == null){
         response.sendRedirect("index.jsp");
         }
+    }catch(Exception e){
+        
+        response.sendRedirect("http://localhost:8084/HospitalProject/index.jsp");
+        
+    }
 %>
 
 
@@ -23,10 +30,13 @@
     </head>
     <body>
     <center>
+      
         <h3>Dear Patient:  <% out.println(user);%> welcome to your account! Please select from the menu what do you want to do</h3>
     </center>
-    
-    
+    <button >Make Appointment</button>
+    <p id="appointment">
+        Date <input type="date" id="date"/>
+    </p>
     
     </body>
 </html>
