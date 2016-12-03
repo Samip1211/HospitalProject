@@ -114,6 +114,39 @@ public class Consultas extends Conexion {
         }
         
     }
+    public boolean changeAppoint(String pat_name,String pat_date,String pat_time){
+        try{
+            String sql="update pat_appoint set pat_date=?, pat_time=? where pat_name=?";
+            pst = getConexion().prepareStatement(sql);
+            pst.setString(1, pat_date);
+            pst.setString(2, pat_time);
+            pst.setString(3, pat_name);
+            if(pst.executeUpdate()==1){
+                return true;
+            }else{
+                return false;
+            }
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public boolean deleteAppoint(String pat_name){
+        try{
+            String sql="delete from pat_appoint where pat_name = ?";
+             pst = getConexion().prepareStatement(sql);
+             pst.setString(1, pat_name);
+             if(pst.executeUpdate()==1){
+                return true;
+            }else{
+                return false;
+            }
+            
+        }catch(Exception e){
+            return false;
+        }
+    }
    public static void main(String[] args) {
         Consultas co = new Consultas();
        //System.out.println(co.registrar("alicia", "chavez", "grove", "managua", "managua","11111", "34343", "paloma","111"));

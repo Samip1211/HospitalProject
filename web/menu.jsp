@@ -36,20 +36,28 @@
     </center>
     <br>
     <p id="appointment" >
-        <form action="" method="post">
-        Date <input type="date" id="datefield" />
-        Time <input type="time" id="timefield"/>
-        
+        <form action="makeappointment" method="post">
+        Date <input type="date" name="datefield" id="datefield"/>
+        Time <input type="time" name="timefield" id="timefield"/>
+        <input type="text" name="method" value="make" hidden>
         <input type="submit" value="Make Appointment" ></button>
         </form>
     </p>
     <p>
         <br>
-        <button >Change an Appointment</button>
+    <form action="makeappointment" method="post">
+        Date <input type="date" name="changedatefield" id="datefield1"/>
+        Time <input type="time" name="changetimefield" id="timefield1"/>
+        <input type="text" name="method" value="update" hidden>
+        <input type="submit" value="Change Appointment" ></button>
+        </form>
     </p>
     <p>
         <br>
-        <button>Cancel an Appointment</button>
+        <form action="makeappointment" method="post">
+        <input type="text" name="method" value="delete" hidden>   
+        <input type="submit" value="Delete Appointment" />
+        </form>
     </p>
     <script type="text/javascript">
             var today = new Date();
@@ -65,6 +73,7 @@
 
             today = yyyy+'-'+mm+'-'+dd;
             document.getElementById("datefield").setAttribute("min", today);
+            document.getElementById("datefield1").setAttribute("min", today);
             console.log(1+2);
         </script>
     </body>
