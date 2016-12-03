@@ -18,9 +18,9 @@ import java.sql.SQLException;
  * @author DOCHAVEZ
  */
 public class Consultas extends Conexion {
-    
+    PreparedStatement pst = null;
     public boolean validation(String pat_name, String pat_lastname, String pat_address, String pat_city, String pat_state, String pat_zipcode, String pat_phonenumber, String pat_username, String pat_password){
-        PreparedStatement pst = null;
+        
         ResultSet rs = null;
         
         try{
@@ -57,7 +57,7 @@ public class Consultas extends Conexion {
     
     }
     public boolean registrar (String pat_name, String pat_lastname, String pat_address, String pat_city, String pat_state, String pat_zipcode, String pat_phonenumber, String pat_username, String pat_password){
-        PreparedStatement pst = null;
+        
         
         try{
       String consulta;
@@ -92,11 +92,32 @@ public class Consultas extends Conexion {
     
     }
     
-    
+    public int getId(){
+        return 0;
+    }
+    public boolean makeAppoint(String pat_name,String pat_date,String pat_time){
+        
+        
+        try{
+            String sql= "insert into pat_appoint (pat_name,pat_date,pat_time) values(?,?,?);";
+            pst = getConexion().prepareStatement(sql);
+            pst.setString(1,pat_name);
+            pst.setString(2,pat_date);
+            pst.setString(3,pat_time);
+            if(pst.executeUpdate()== 1){
+                return true;
+            }else{
+                return false;
+            }
+        }catch(Exception e){
+            return false;
+        }
+        
+    }
    public static void main(String[] args) {
         Consultas co = new Consultas();
-       System.out.println(co.registrar("alicia", "chavez", "grove", "managua", "managua","11111", "34343", "paloma","111"));
-           }
+       //System.out.println(co.registrar("alicia", "chavez", "grove", "managua", "managua","11111", "34343", "paloma","111"));
+    }
 
     public boolean autenticacion(String user, String pass) {
         return true; //To change body of generated methods, choose Tools | Templates.
