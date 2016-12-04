@@ -147,6 +147,28 @@ public class Consultas extends Conexion {
             return false;
         }
     }
+    public String viewAppoint(String user){
+        try{
+            
+            String sql = "select * from pat_appoint where pat_username=?";
+            pst = getConexion().prepareStatement(sql);
+            pst.setString(1,user);
+            ResultSet rs = pst.executeQuery();
+            String date=null;
+            String time = null;
+            while(rs.next())
+            {
+                date=rs.getString("pat_date");
+                time=rs.getString("pat_time");   
+            }
+            return date+time; 
+            
+        }catch(Exception e){
+            e.printStackTrace();
+            return "empty";
+        }
+        
+    }
    public static void main(String[] args) {
         Consultas co = new Consultas();
        //System.out.println(co.registrar("alicia", "chavez", "grove", "managua", "managua","11111", "34343", "paloma","111"));

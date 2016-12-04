@@ -59,6 +59,13 @@
         <input type="submit" value="Delete Appointment" />
         </form>
     </p>
+    <p>
+        <br>
+        <form action="makeappointment" method="post">
+        <input type="text" name="method" value="view" hidden>   
+        <input type="submit" value="View My Appointment" />
+        </form>
+    </p>
     <script type="text/javascript">
             var today = new Date();
             var dd = today.getDate();

@@ -64,7 +64,19 @@ public class makeappointment extends HttpServlet {
                     out.println("There's been a problem");
                     rd.include(request, response);
                 }
-            }else{
+            }else if(method.equals("view")){
+                String appoint_detail= new String("");
+                appoint_detail= co.viewAppoint(user);
+                
+                if(!appoint_detail.equals("empty")){
+                    out.print(appoint_detail);
+                    rd.include(request, response);
+                }else{
+                    out.println("There's been a problem");
+                    rd.include(request, response);
+                }
+            }
+            else{
                 if(co.deleteAppoint(user)){
                     out.println("Your Appointment has been deleted");
                 rd.include(request, response);
