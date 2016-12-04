@@ -45,7 +45,7 @@ public class startsession extends HttpServlet {
         if(co.autenticacion(user, pass)){
             HttpSession objsesion = request.getSession(true);
             objsesion.setAttribute("user", user);
-            objsesion.setAttribute("userId",user);
+            
             response.sendRedirect("menu.jsp");
         }else{
               response.sendRedirect("index.jsp");

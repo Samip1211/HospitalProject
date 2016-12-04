@@ -99,7 +99,7 @@ public class Consultas extends Conexion {
         
         
         try{
-            String sql= "insert into pat_appoint (pat_name,pat_date,pat_time) values(?,?,?);";
+            String sql= "insert into pat_appoint (pat_username,pat_date,pat_time) values(?,?,?);";
             pst = getConexion().prepareStatement(sql);
             pst.setString(1,pat_name);
             pst.setString(2,pat_date);
@@ -116,7 +116,7 @@ public class Consultas extends Conexion {
     }
     public boolean changeAppoint(String pat_name,String pat_date,String pat_time){
         try{
-            String sql="update pat_appoint set pat_date=?, pat_time=? where pat_name=?";
+            String sql="update pat_appoint set pat_date=?, pat_time=? where pat_username=?";
             pst = getConexion().prepareStatement(sql);
             pst.setString(1, pat_date);
             pst.setString(2, pat_time);
@@ -134,7 +134,7 @@ public class Consultas extends Conexion {
     }
     public boolean deleteAppoint(String pat_name){
         try{
-            String sql="delete from pat_appoint where pat_name = ?";
+            String sql="delete from pat_appoint where pat_username = ?";
              pst = getConexion().prepareStatement(sql);
              pst.setString(1, pat_name);
              if(pst.executeUpdate()==1){
