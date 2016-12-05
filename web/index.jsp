@@ -57,7 +57,7 @@
         </form>
         <br>
         In case you do not have an account in the system, please click <a href="registar.jsp"> here</a>
-        to create one.
+        to create one..
         </center>
         <br>
         <center>
