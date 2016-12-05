@@ -53,7 +53,8 @@ public class MakeAppointment extends HttpServlet {
                     return;
                 }
                 if(co.checkTime(pat_time)){
-                    
+                    out.print("  ");
+                     out.print("  ");
                 }else{
                     out.println("Invalid Time");
                     rd.include(request, response);
