@@ -32,7 +32,11 @@
     <body>
     <center>
       
+<<<<<<< HEAD
         <h3>Dear Patient:  <% out.println(user); %> welcome to your account! Please select from the menu what do you want to do</h3>
+=======
+        <h3>Dear Patient:  <% out.println(user);%> welcome to your account!! Please select from the menu what do you want to do</h3>
+>>>>>>> 89ebf94bd09bb49623b67c65beb32abe3b1b81fc
     </center>
     <br>
     <p id="appointment" >
