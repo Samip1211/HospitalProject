@@ -32,7 +32,7 @@
     <body>
     <center>
       
-        <h3>Dear Patient:  <% out.println(user);%> welcome to your account! Please select from the menu what do you want to do</h3>
+        <h3>Dear Patient:  <% out.println(user);%> welcome to your account!! Please select from the menu what do you want to do</h3>
     </center>
     <br>
     <p id="appointment" >
