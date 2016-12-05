@@ -37,8 +37,8 @@
     <br>
     <p id="appointment" >
         <form action="makeappointment" method="post">
-        Date <input type="date" name="datefield" id="datefield"/>
-        Time <input type="time" name="timefield" id="timefield"/>
+        Date <input type="date" name="datefield" id="datefield" required/>
+        Time <input type="time" name="timefield" id="timefield" required/>
         <input type="text" name="method" value="make" hidden>
         <input type="submit" value="Make Appointment" ></button>
         </form>
@@ -82,6 +82,7 @@
             document.getElementById("datefield").setAttribute("min", today);
             document.getElementById("datefield1").setAttribute("min", today);
             console.log(1+2);
+            
         </script>
     </body>
 </html>

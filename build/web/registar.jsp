@@ -27,11 +27,11 @@
             <input type="text" name="pat_state" /><br>
             <label>Zipcode:</label>
             <input type="text" name="pat_zipcode" /><br>
-            <label>Phone number:</label>
+            <label >Phone number:</label>
             <input type="text" name="pat_phonenumber" /><br>
-            <label>Patient Username:</label>
+            <label>Patient Username</label>
             <input type="text" name="pat_username" /><br>
-            <label>Patient Password:</label>
+            <label>Patient Password</label>
             <input type="text" name="pat_password" /><br>
             <input type="submit" value="Create Account" />
                   

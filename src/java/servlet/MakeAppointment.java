@@ -19,25 +19,47 @@ import javax.servlet.http.HttpSession;
  *
  * @author samip
  */
-public class makeappointment extends HttpServlet {
+public class MakeAppointment extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out= response.getWriter();
-       String user;
-       HttpSession objsesion = request.getSession(false);
-       user = (String)objsesion.getAttribute("user");
-       
+        RequestDispatcher rd=request.getRequestDispatcher("/menu.jsp");
+        
+        String user;
+        HttpSession objsesion = request.getSession(false);
+        user = (String)objsesion.getAttribute("user");
+        
+        if(user.isEmpty()){
+           out.println("Please Sign In");
+           rd.include(request, response);
+           return;
+        }
         String method=request.getParameter("method");
        
         Consultas co= new Consultas();
-        RequestDispatcher rd=request.getRequestDispatcher("/menu.jsp"); 
+        
             if(method.equals("make")){
                 String pat_date= request.getParameter("datefield");
                 String pat_time= request.getParameter("timefield");
-        
+                
+                if(co.checkDate(pat_date)){
+                    
+                }else{
+                    out.println("Invalid Date");
+                    rd.include(request, response);
+                    return;
+                }
+                if(co.checkTime(pat_time)){
+                    
+                }else{
+                    out.println("Invalid Time");
+                    rd.include(request, response);
+                    return;
+                }
+                
                 out.println(pat_date+ " "+ pat_time);
                 if(co.makeAppoint(user, pat_date, pat_time)){
            
@@ -55,6 +77,22 @@ public class makeappointment extends HttpServlet {
                 String pat_time= request.getParameter("changetimefield");
         
                  out.println(pat_date+ " "+ pat_time);
+                 
+                 if(co.checkDate(pat_date)){
+                    
+                }else{
+                    out.println("Invalid Date");
+                    rd.include(request, response);
+                    return;
+                }
+                if(co.checkTime(pat_time)){
+                    
+                }else{
+                    out.println("Invalid Time");
+                    rd.include(request, response);
+                    return;
+                }
+                 
                 if(co.changeAppoint(user, pat_date, pat_time)){
               
                 out.println("Your Appointment has been reset");

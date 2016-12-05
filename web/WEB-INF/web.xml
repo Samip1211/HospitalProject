@@ -6,7 +6,7 @@
     </servlet>
     <servlet>
         <servlet-name>makeappointment</servlet-name>
-        <servlet-class>servlet.makeappointment</servlet-class>
+        <servlet-class>servlet.MakeAppointment</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>registeruser</servlet-name>
