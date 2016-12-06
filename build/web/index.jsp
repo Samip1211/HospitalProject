@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Hospital Healtcare System</title>
-        <script>
+        <script type="text/javascript">
             /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -57,7 +57,7 @@
         </form>
         <br>
         In case you do not have an account in the system, please click <a href="registar.jsp"> here</a>
-        to create one.
+        to create one...
         </center>
         <br>
         <center>

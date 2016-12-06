@@ -7,9 +7,13 @@ package Controlador;
 
 
 
+import java.io.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 
@@ -161,7 +165,7 @@ public class Consultas extends Conexion {
                 date=rs.getString("pat_date");
                 time=rs.getString("pat_time");   
             }
-            return date+time; 
+            return date+" "+time; 
             
         }catch(Exception e){
             e.printStackTrace();
@@ -177,11 +181,63 @@ public class Consultas extends Conexion {
     public boolean autenticacion(String user, String pass) {
         return true; //To change body of generated methods, choose Tools | Templates.
     }
-
-   
     
-
-   
+    public  boolean checkDate(String datefield) { 
+    String dateFormat = "yyyy-MM-dd"; 
+    int dateFormatLength = dateFormat.length(); 
+    try { 
+      if (datefield.length() != dateFormatLength) 
+        throw new Exception(); 
+      else { 
+        SimpleDateFormat format = new SimpleDateFormat(dateFormat); 
+        //format.setLenient(false); 
+        Date theDate= new Date(); 
+        theDate = format.parse(datefield); 
+        return true; 
+      } 
+    } 
+    catch(Exception e) { 
+        e.printStackTrace();
+        return false; 
+    } 
+  }
+    public boolean checkTime(String timefield){
+        try{
+            String after = new String("09:00");
+            String before = new String("16:00");
+            DateFormat sdf = new SimpleDateFormat("hh:mm");
+            Date time = sdf.parse(timefield);
+            Date aftertime= sdf.parse(after);
+            Date beforetime = sdf.parse(before);
+            if(time.after(aftertime) && time.before(beforetime)){
+                return true;
+            }else{
+                return false;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+    public int getAmount(String username){
+        try{
+            String sql = "select * from pat_payment where pat_username=?";
+            pst = getConexion().prepareStatement(sql);
+            pst.setString(1,username);
+            ResultSet rs = pst.executeQuery();
+            int amount= 0;
+            while(rs.next())
+            {
+                amount=rs.getInt("pat_amount");
+                   
+            }
+            return amount;
+        }catch(Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+        
+    }
 }
 
 

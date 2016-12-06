@@ -5,6 +5,14 @@
         <servlet-class>servlet.startsession</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>makeappointment</servlet-name>
+        <servlet-class>servlet.MakeAppointment</servlet-class>
+    </servlet>
+      <servlet>
+        <servlet-name>makePayment</servlet-name>
+        <servlet-class>servlet.MakePayment</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>registeruser</servlet-name>
         <servlet-class>servlet.registeruser</servlet-class>
     </servlet>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>registeruser</servlet-name>
         <url-pattern>/registeruser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>makeappointment</servlet-name>
+        <url-pattern>/makeappointment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>makePayment</servlet-name>
+        <url-pattern>/makePayment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

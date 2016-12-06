@@ -32,13 +32,15 @@
     <body>
     <center>
       
-        <h3>Dear Patient:  <% out.println(user);%> welcome to your account! Please select from the menu what do you want to do</h3>
+
+    <h3>Dear Patient:  <% out.println(user);%> welcome to your account!! Please select from the menu what do you want to do</h3>
+
     </center>
     <br>
     <p id="appointment" >
         <form action="makeappointment" method="post">
-        Date <input type="date" name="datefield" id="datefield"/>
-        Time <input type="time" name="timefield" id="timefield"/>
+        Date <input type="date" name="datefield" id="datefield" required/>
+        Time <input type="time" name="timefield" id="timefield" required/>
         <input type="text" name="method" value="make" hidden>
         <input type="submit" value="Make Appointment" ></button>
         </form>
@@ -66,6 +68,14 @@
         <input type="submit" value="View My Appointment" />
         </form>
     </p>
+    <p>
+        <br>
+        <form action="makePayment" method="post">
+        <input type="text" name="payment" value="notpayment" hidden>
+        <input type="submit" value="Make Payment">
+    </form>
+    
+    </p>
     <script type="text/javascript">
             var today = new Date();
             var dd = today.getDate();
@@ -82,6 +92,7 @@
             document.getElementById("datefield").setAttribute("min", today);
             document.getElementById("datefield1").setAttribute("min", today);
             console.log(1+2);
+            
         </script>
     </body>
 </html>
