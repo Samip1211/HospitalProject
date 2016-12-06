@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import include.TrippleDes;
 
 
 /**
@@ -179,7 +179,37 @@ public class Consultas extends Conexion {
     }
 
     public boolean autenticacion(String user, String pass) {
-        return true; //To change body of generated methods, choose Tools | Templates.
+       int a = 0;
+        try{
+            
+            TrippleDes trippleDes = new TrippleDes();
+            String password= new String("");
+            password = trippleDes.decrypt(pass);
+            String sql = "select * from pat_register where pat_username=?";
+            pst = getConexion().prepareStatement(sql);
+            pst.setString(1, user);
+            ResultSet rs = pst.executeQuery();
+            while(rs.next())
+            {
+                    if(user.equals(rs.getString("pat_username"))&& 
+                        password.equals(trippleDes.decrypt(rs.getString("pat_password")))){
+                        a=1;
+                        return true;
+                    }else{
+                        return false;
+                    } 
+            }
+        
+        }catch(Exception e){
+            e.printStackTrace();
+            return false;
+       }finally{
+           if(a==1){
+               return true;
+           }else{
+               return false;
+           }
+       }
     }
     
     public  boolean checkDate(String datefield) { 

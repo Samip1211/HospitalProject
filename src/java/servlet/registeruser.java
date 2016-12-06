@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import include.TrippleDes;
 /**
  *
  * @author DOCHAVEZ
@@ -33,23 +33,30 @@ public class registeruser extends HttpServlet {
             throws ServletException, IOException{
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        TrippleDes trippleDes;
+        try{
+            trippleDes = new TrippleDes();
+            String pat_name = request.getParameter("pat_name");
+            String pat_lastname = request.getParameter("pat_lastname");
+            String pat_address = request.getParameter("pat_address");
+            String pat_city = request.getParameter("pat_city");
+            String pat_state = request.getParameter("pat_state");
+            String pat_zipcode = request.getParameter("pat_zipcode");
+            String pat_phonenumber = request.getParameter("pat_phonenumber");
+            String pat_username = request.getParameter("pat_username");
+            String pat_password = trippleDes.encrypt(request.getParameter("pat_password"));
         
-        String pat_name = request.getParameter("pat_name");
-        String pat_lastname = request.getParameter("pat_lastname");
-        String pat_address = request.getParameter("pat_address");
-        String pat_city = request.getParameter("pat_city");
-        String pat_state = request.getParameter("pat_state");
-        String pat_zipcode = request.getParameter("pat_zipcode");
-        String pat_phonenumber = request.getParameter("pat_phonenumber");
-        String pat_username = request.getParameter("pat_username");
-        String pat_password = request.getParameter("pat_password");
-        
-        Consultas co = new Consultas();
-        if(co.registrar(pat_name, pat_lastname, pat_address, pat_city, pat_state, pat_zipcode, pat_phonenumber, pat_username, pat_password)){
-            response.sendRedirect("index.jsp");
-        }else{
-            response.sendRedirect("registar.jsp");
+            Consultas co = new Consultas();
+            if(co.registrar(pat_name, pat_lastname, pat_address, pat_city, pat_state, pat_zipcode, pat_phonenumber, pat_username, pat_password)){
+                response.sendRedirect("index.jsp");
+            }else{
+                response.sendRedirect("registar.jsp");
+            }
+        }catch(Exception e){
+           e.printStackTrace();
+           response.sendRedirect("index.jsp");
         }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

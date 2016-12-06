@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import include.TrippleDes;
 /**
  *
  * @author DOCHAVEZ
@@ -37,6 +37,17 @@ public class startsession extends HttpServlet {
         String user = request.getParameter("pat_username");
         String pass = request.getParameter("pat_password");
         
+        try{
+            
+            TrippleDes trippleDes= new TrippleDes();
+            
+            pass= trippleDes.encrypt(request.getParameter("pat_password"));
+            
+            
+        }catch(Exception e){
+            e.printStackTrace();
+             response.sendRedirect("index.jsp");
+        }
             
         
         

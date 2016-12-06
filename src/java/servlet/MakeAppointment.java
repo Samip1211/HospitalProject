@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import include.TrippleDes;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author samip
@@ -45,6 +47,7 @@ public class MakeAppointment extends HttpServlet {
                 String pat_date= request.getParameter("datefield");
                 String pat_time= request.getParameter("timefield");
                 
+                
                 if(co.checkDate(pat_date)){
                     
                 }else{
@@ -72,6 +75,8 @@ public class MakeAppointment extends HttpServlet {
                 }else{
             
                     out.println("Not Succesful");
+                    rd.include(request, response);
+                   
                 }
             }else if(method.equals("update")){
                 String pat_date= request.getParameter("changedatefield");
