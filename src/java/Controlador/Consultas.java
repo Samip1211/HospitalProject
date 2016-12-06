@@ -219,6 +219,25 @@ public class Consultas extends Conexion {
             return false;
         }
     }
+    public int getAmount(String username){
+        try{
+            String sql = "select * from pat_payment where pat_username=?";
+            pst = getConexion().prepareStatement(sql);
+            pst.setString(1,username);
+            ResultSet rs = pst.executeQuery();
+            int amount= 0;
+            while(rs.next())
+            {
+                amount=rs.getInt("pat_amount");
+                   
+            }
+            return amount;
+        }catch(Exception e){
+            e.printStackTrace();
+            return 0;
+        }
+        
+    }
 }
 
 

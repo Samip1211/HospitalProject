@@ -1,4 +1,4 @@
-6<%-- 
+<%-- 
     Document   : menu
     Created on : 26-nov-2016, 19:45:17
     Author     : DOCHAVEZ
@@ -32,11 +32,9 @@
     <body>
     <center>
       
-<<<<<<< HEAD
-        <h3>Dear Patient:  <% out.println(user); %> welcome to your account! Please select from the menu what do you want to do</h3>
-=======
-        <h3>Dear Patient:  <% out.println(user);%> welcome to your account!! Please select from the menu what do you want to do</h3>
->>>>>>> 89ebf94bd09bb49623b67c65beb32abe3b1b81fc
+
+    <h3>Dear Patient:  <% out.println(user);%> welcome to your account!! Please select from the menu what do you want to do</h3>
+
     </center>
     <br>
     <p id="appointment" >
@@ -72,7 +70,8 @@
     </p>
     <p>
         <br>
-    <form action="makePayment" method="post">
+        <form action="makePayment" method="post">
+        <input type="text" name="payment" value="notpayment" hidden>
         <input type="submit" value="Make Payment">
     </form>
     

@@ -8,7 +8,7 @@
         <servlet-name>makeappointment</servlet-name>
         <servlet-class>servlet.MakeAppointment</servlet-class>
     </servlet>
-      <servlet>
+    <servlet>
         <servlet-name>makePayment</servlet-name>
         <servlet-class>servlet.MakePayment</servlet-class>
     </servlet>
