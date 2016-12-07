@@ -5,6 +5,10 @@
         <servlet-class>servlet.startsession</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>viewreport</servlet-name>
+        <servlet-class>servlet.ViewPatientRecord</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>makeappointment</servlet-name>
         <servlet-class>servlet.MakeAppointment</servlet-class>
     </servlet>
@@ -31,6 +35,10 @@
     <servlet-mapping>
         <servlet-name>makePayment</servlet-name>
         <url-pattern>/makePayment</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>viewreport</servlet-name>
+        <url-pattern>/viewreport</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

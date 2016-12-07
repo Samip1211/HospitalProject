@@ -15,6 +15,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import include.TrippleDes;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -103,11 +105,11 @@ public class Consultas extends Conexion {
         
         
         try{
-            String sql= "insert into pat_appoint (pat_username,pat_date,pat_time) values(?,?,?);";
+            String sql= "insert into pat_appoint (pat_username,pat_time,pat_date) values(?,?,?);";
             pst = getConexion().prepareStatement(sql);
             pst.setString(1,pat_name);
-            pst.setString(2,pat_date);
-            pst.setString(3,pat_time);
+            pst.setString(2,pat_time);
+            pst.setString(3,pat_date);
             if(pst.executeUpdate()== 1){
                 return true;
             }else{
@@ -267,6 +269,32 @@ public class Consultas extends Conexion {
             return 0;
         }
         
+    }
+    public List getReport(String user){
+        List result = new ArrayList();
+        
+        try{
+            String sql = "select * from pat_report where pat_username=?";
+            pst = getConexion().prepareStatement(sql);
+            pst.setString(1,user);
+            ResultSet rs = pst.executeQuery();
+            String blood_pressure= null;
+            String sugar= null;
+            String allergies= null;
+            while(rs.next())
+            {
+                blood_pressure= rs.getString("pat_blood_pressure");
+                sugar = rs.getString("pat_sugar");
+                allergies = rs.getString("pat_allergies");
+                result.add(blood_pressure);
+                result.add(sugar);
+                result.add(allergies);
+            }
+            return result;
+        }catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 }
 

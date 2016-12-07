@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import include.TrippleDes;
+import javax.servlet.RequestDispatcher;
 /**
  *
  * @author DOCHAVEZ
@@ -33,6 +34,7 @@ public class registeruser extends HttpServlet {
             throws ServletException, IOException{
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        RequestDispatcher rd=request.getRequestDispatcher("/registar.jsp");
         TrippleDes trippleDes;
         try{
             trippleDes = new TrippleDes();
@@ -50,7 +52,8 @@ public class registeruser extends HttpServlet {
             if(co.registrar(pat_name, pat_lastname, pat_address, pat_city, pat_state, pat_zipcode, pat_phonenumber, pat_username, pat_password)){
                 response.sendRedirect("index.jsp");
             }else{
-                response.sendRedirect("registar.jsp");
+                out.print("Theres been a problem");
+                rd.include(request, response);
             }
         }catch(Exception e){
            e.printStackTrace();
